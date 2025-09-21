@@ -1,0 +1,28 @@
+
+bundle:
+  name: main_bundle
+  uuid: 066e47c9-1327-4986-a058-fa59dbf64083
+
+include:
+  - resources/*.yml
+  - resources/*/*.yml
+  - vars/*.yml
+  - vars/*/*.yml
+
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-1779288433404429.9.azuredatabricks.net
+      root_path: /Workspace/Users/jannick.kappelmann@senacor.com/development/${bundle.name}/${bundle.target}
+
+  prod:
+    mode: production
+    workspace:
+      host: https://adb-1779288433404429.9.azuredatabricks.net
+      root_path: /Workspace/Users/jannick.kappelmann@senacor.com/production/${bundle.name}/${bundle.target}
+    permissions:
+      - user_name: jannick.kappelmann@senacor.com
+        level: CAN_MANAGE

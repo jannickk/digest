@@ -1,0 +1,5 @@
+variables:
+  storage_acount_name: senjkdtbxloader
+  container: data
+  path_to_monitor: folder
+  cluster_id: 0715-095105-81paz03r

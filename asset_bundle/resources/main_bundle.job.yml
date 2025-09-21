@@ -1,0 +1,22 @@
+# The main job for main_bundle.
+resources:
+  jobs:
+    ingest_to_bronze:
+      name: source-to-bronze
+
+      continuous:
+
+      tasks:
+        - task_key: spectrum_identification
+          existing_cluster_id: 0715-095105-81paz03r
+          notebook_task:
+            notebook_path: ../src/file-to-bronze-spectrum-identification-result.ipynb
+        - task_key: peptide_evidence
+          existing_cluster_id: 0715-095105-81paz03r
+          notebook_task:
+            notebook_path: ../src/file-to-bronze-peptide-evidence.ipynb
+        - task_key: db_sequence
+          existing_cluster_id: 0715-095105-81paz03r
+          notebook_task:
+            notebook_path: ../src/file-to-bronze-dbsequence.ipynb        
+
