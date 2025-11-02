@@ -1,5 +1,5 @@
 variables:
-  storage_acount_name:
+  storage_account_name:
     description: The storage account name where to look 
   container:
     description: The container in which new files are going to be deposited
@@ -7,5 +7,3 @@ variables:
     description: The path within the container to monitor for new files
   existing_cluster_id:
    description: The id of the cluster on hwich to run the jobs
-  workspace_url:
-    description: The URL of the databricks workspace

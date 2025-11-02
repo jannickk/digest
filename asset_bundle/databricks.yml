@@ -17,7 +17,6 @@ targets:
     mode: development
     default: true
     workspace:
-      host: ${var.workspace_url}
       root_path: /Workspace/Users/${workspace.current_user.userName}/development/${bundle.name}/${bundle.target}
     permissions:
       - user_name: ${workspace.current_user.userName}
@@ -26,7 +25,6 @@ targets:
   prod:
     mode: production
     workspace:
-      host: ${var.workspace_url}
       root_path: /Workspace/Users/${workspace.current_user.userName}/production/${bundle.name}/${bundle.target}
     permissions:
       - user_name: ${workspace.current_user.userName}
