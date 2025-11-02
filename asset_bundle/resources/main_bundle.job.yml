@@ -8,15 +8,41 @@ resources:
 
       tasks:
         - task_key: spectrum_identification
-          existing_cluster_id: 0715-095105-81paz03r
+          existing_cluster_id: ${var.existing_cluster_id}
           notebook_task:
             notebook_path: ../src/file-to-bronze-spectrum-identification-result.ipynb
         - task_key: peptide_evidence
-          existing_cluster_id: 0715-095105-81paz03r
+          existing_cluster_id: ${var.existing_cluster_id}
           notebook_task:
             notebook_path: ../src/file-to-bronze-peptide-evidence.ipynb
         - task_key: db_sequence
-          existing_cluster_id: 0715-095105-81paz03r
+          existing_cluster_id: ${var.existing_cluster_id}
           notebook_task:
-            notebook_path: ../src/file-to-bronze-dbsequence.ipynb        
+            notebook_path: ../src/file-to-bronze-dbsequence.ipynb
+        - task_key: peptide
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src/file-to-bronze-peptide.ipynb
+        
+    bronze-to-silber:
+      name: bronze-to-silver
 
+      continuous:
+
+      tasks:
+        - task_key: spectrum_identification
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src/bronze-to-silver-spectrum-identification-result.ipynb
+        - task_key: peptide_evidence
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src/bronze-to-silver-peptide-evidence.ipynb
+        - task_key: db_sequence
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src/bronze-to-silver-dbsequence.ipynb
+        - task_key: peptide
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src/bronze-to-silver-peptide.ipynb
