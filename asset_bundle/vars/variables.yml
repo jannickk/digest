@@ -1,5 +1,11 @@
 variables:
-  storage_acount_name: senjkdtbxloader
-  container: data
-  path_to_monitor: folder
-  cluster_id: 0715-095105-81paz03r
+  storage_acount_name:
+    description: The storage account name where to look 
+  container:
+    description: The container in which new files are going to be deposited
+  path_to_monitor:
+    description: The path within the container to monitor for new files
+  existing_cluster_id:
+   description: The id of the cluster on hwich to run the jobs
+  workspace_url:
+    description: The URL of the databricks workspace
