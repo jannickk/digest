@@ -72,6 +72,24 @@ The columns are annotated in the following way:
 - protein_description: A description of the protein from the annotation of the corresponding sequence
 
 
+**bronze.spectrumidentifcationresult**
+
+table description:
+
+Each row contains a spectrum from the set of acquisitions which were used to build the library. The peptide-spectrum matches that could be established for a spectrum are contained in the array of column SpectrumIdentificationItem.
+
+column description:
+
+- _id : The id of the entry. This id corresponds to the the id attribute of the SpectrumIdentificationResult XML element from the library file
+- _spectrumID: The locally unique id for the spectrum in the spectra data set specified by _spectraData_ref. This is the spectrum from which the identications are made. 
+- _spectraData_ref: A data set containing spectra data (consisting of one or more spectra). 
+- cvParam: An array of controlled vocabulatory terms that serve as metadata to the spectrum
+- source_file: The library file from which the data were extracted. Each file corresponds to exactly one library. 
+- file_size: The size of library in bytes
+- SpectrumIdentificationItem: This column contains an array for each spectrum which contains all Peptide-Spectrum matches that could be established for the spectrum of that row 
+
+
+
 **silver.spectrumidentifcationresult**
 
 table description:
