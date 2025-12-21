@@ -9,3 +9,7 @@ variables:
    description: The id of the cluster on hwich to run the jobs
   workspace_url:
     description: The URL of the databricks workspace
+  catalog:
+    description: The catalog where to deploy the resources
+  schema:
+    description: The schema into which to deploy create tables

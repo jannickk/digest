@@ -1,0 +1,68 @@
+# The main job for main_bundle.
+# The main job for main_bundle.
+resources:
+  jobs:
+    proteomics:
+      name: proteomics
+
+      continuous:
+
+      parameters:
+        - name: catalog
+          default: ${var.catalog}
+        - name: schema
+          default: ${var.schema}
+        - name: storage_account_name
+  	      default: ${var.storage_account_name}
+        - name: container
+          default: ${var.container}
+        - name: path_to_monitor
+          default: ${var.path_to_monitor}
+      tasks:
+        - task_key: spectrum_identification_file_to_bronze
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src-imperative/file-to-bronze-spectrum-identification-result.ipynb
+
+        - task_key: spectrum_identification_bronze_to_silver
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src-imperative/bronze-to-silver-spectrum-identification-result.ipynb
+          depends_on:
+            - task_key: spectrum_identification_file_to_bronze
+          
+        - task_key: peptide_evidence_file_to_bronze
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src-imperative/file-to-bronze-peptide-evidence.ipynb
+
+        - task_key: peptide_evidence
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src-imperative/bronze-to-silver-peptide-evidence.ipynb
+          depends_on:
+            - task_key: peptide_evidence_file_to_bronze
+
+        - task_key: db_sequence_file_to_bronze
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src-imperative/file-to-bronze-dbsequence.ipynb
+
+        - task_key: db_sequence_bronze_to_silver
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src-imperative/bronze-to-silver-dbsequence.ipynb
+          depends_on:
+            - task_key: db_sequence_file_to_bronze
+
+        - task_key: peptide_file_to_bronze
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src-imperative/file-to-bronze-peptide.ipynb
+
+        - task_key: peptide_bronze_to_silver
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../src-imperative/bronze-to-silver-peptide.ipynb
+          depends_on:
+            - task_key: peptide_file_to_bronze

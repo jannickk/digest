@@ -1,0 +1,20 @@
+resources:
+  pipeline:
+    proteomics_pipeline:
+      pipeline_type: WORKSPACE
+      name: proteomics_pipeline
+      libraries:
+        - glob:
+            include: ../src-declarative/transformations/**
+      schema: ${var.schema}
+      continuous: false
+      photon: true
+      channel: CURRENT
+      catalog: ${var.catalog}
+      serverless: true
+      event_log:
+        name: event_log_proteomics_pipeline
+        schema: ${var.schema}
+        catalog: ${var.catalog}
+      root_path: ../src-declarative
+

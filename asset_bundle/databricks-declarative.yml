@@ -1,8 +1,6 @@
-
 bundle:
-  name: main_bundle
+  name: proteomics
   uuid: 066e47c9-1327-4986-a058-fa59dbf64083
-
 
 
 include:
