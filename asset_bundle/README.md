@@ -12,9 +12,10 @@ databricks auth login --host <workspace-url>
 
 ## Validate
 
-databricks bundle validate --var="container=data" --var="path_to_monitor=folder" --var="existing_cluster_id=0129-072203-9ov97njk" --var="storage_account_name=senjkdtbxloader" --var="catalog=jk_libraries" --var="schema=dev_bundle"
+databricks bundle validate --var="storage_account_name=<value>" --var="container=<value>" --var="path_to_monitor=<value>" --var="existing_cluster_id=<value>"--var="catalog=<value>"
+--var="schema=<value>"
 
 ## Deploy the bundle to a target 
 
-databricks bundle deploy --var="storage_account_name=<value>" --var="container=<value>" --var="path_to_monitor=<value>" --var="existing_cluster_id=<value>" --var="storage_account_name=<value>" --var="catalog=<value>"
---var="schema=<value>" --config databricks-imperative.yml --target dev
+databricks bundle deploy --var="storage_account_name=<value>" --var="container=<value>" --var="path_to_monitor=<value>" --var="existing_cluster_id=<value>"--var="catalog=<value>"
+--var="schema=<value>" --target dev
