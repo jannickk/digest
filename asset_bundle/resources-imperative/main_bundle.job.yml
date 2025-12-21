@@ -1,5 +1,4 @@
-# The main job for main_bundle.
-# The main job for main_bundle.
+
 resources:
   jobs:
     proteomics:
@@ -13,21 +12,23 @@ resources:
         - name: schema
           default: ${var.schema}
         - name: storage_account_name
-  	      default: ${var.storage_account_name}
+          default: ${var.storage_account_name}
         - name: container
           default: ${var.container}
         - name: path_to_monitor
           default: ${var.path_to_monitor}
+
       tasks:
+
         - task_key: spectrum_identification_file_to_bronze
           existing_cluster_id: ${var.existing_cluster_id}
           notebook_task:
-            notebook_path: ../src-imperative/file-to-bronze-spectrum-identification-result.ipynb
+            notebook_path: ../src-imperative/file-to-bronze-spectrumidentificationresult.ipynb
 
         - task_key: spectrum_identification_bronze_to_silver
           existing_cluster_id: ${var.existing_cluster_id}
           notebook_task:
-            notebook_path: ../src-imperative/bronze-to-silver-spectrum-identification-result.ipynb
+            notebook_path: ../src-imperative/bronze-to-silver-spectrumidentificationresult.ipynb
           depends_on:
             - task_key: spectrum_identification_file_to_bronze
           

@@ -6,8 +6,8 @@ bundle:
 
 
 include:
-  - resources/*.yml
-  - resources/*/*.yml
+  - resources-imperative/*.yml
+  - resources-imperative/*/*.yml
   - vars/*.yml
   - vars/*/*.yml
 
@@ -17,8 +17,7 @@ targets:
     mode: development
     default: true
     workspace:
-      host: ${var.workspace_url}
-      root_path: /Workspace/Users/${workspace.current_user.userName}/development/${bundle.name}/${bundle.target}
+      root_path: /Workspace/Users/${workspace.current_user.userName}/${bundle.name}/${bundle.target}
     permissions:
       - user_name: ${workspace.current_user.userName}
         level: CAN_MANAGE
@@ -26,8 +25,7 @@ targets:
   prod:
     mode: production
     workspace:
-      host: ${var.workspace_url}
-      root_path: /Workspace/Users/${workspace.current_user.userName}/production/${bundle.name}/${bundle.target}
+      root_path: /Workspace/Users/${workspace.current_user.userName}/${bundle.name}/${bundle.target}
     permissions:
       - user_name: ${workspace.current_user.userName}
         level: CAN_MANAGE
